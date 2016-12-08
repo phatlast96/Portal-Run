@@ -90,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let position = touch.location(in: self)
                 print(position.x, position.y)
                 if button.contains(position) {
-                    _ = self.viewController.navigationController?.popToRootViewController(animated: true)
+                    _ = self.viewController.navigationController?.popViewController(animated: true)
                 }
             }
             self.removeChildren(in: [button])
