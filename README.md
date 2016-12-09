@@ -1,4 +1,4 @@
-#iOS Decal Final Project #
+#iOS DeCal Final Project #
 
 App Name: Portal Run
 
