@@ -10,6 +10,7 @@ import UIKit
 
 class HighScoresTableViewController: UITableViewController {
     
+    var highScores: [Int]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,11 @@ class HighScoresTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        highScores = ScoreboardData.topScoresDescending
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,14 +43,14 @@ class HighScoresTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ScoreboardData.topScores.count
+        return highScores.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(1 + indexPath.row). \(ScoreboardData.topScores[indexPath.row])"
+        cell.textLabel?.text = "\(1 + indexPath.row). \(highScores[indexPath.row]) seconds"
         return cell
     }
     

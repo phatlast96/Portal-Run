@@ -43,7 +43,19 @@ class ScoreboardData: NSObject {
     }
     
     /** Stores the top scores */
-    static var topScores: [Int] = []
+    private static var _topScores: [Int] = []
+    static var topScores: [Int] {
+        get {
+            return _topScores.sorted()
+        }
+    }
+    
+    /** An array of top scores that listed in descending order */
+    static var topScoresDescending: [Int] {
+        get {
+            return _topScores.sorted() { $0 > $1 }
+        }
+    }
     
     /** Initializes the game data. Ideally, there should be a ScoreboardData instance for every game session played. */
     override init() {
@@ -66,14 +78,13 @@ class ScoreboardData: NSObject {
     /** Updates the top scores if necessary with the selected score and indicates whether it succeeds. */
     static func updateTopScore(score: Int) -> Bool {
         if ScoreboardData.topScores.count < 10 {
-            ScoreboardData.topScores.append(score)
-            ScoreboardData.topScores = ScoreboardData.topScores.sorted()
+            _topScores.append(score)
             return true
         }
-        if score > ScoreboardData.topScores.min()! {
-            ScoreboardData.topScores.removeFirst()
-            ScoreboardData.topScores.append(score)
-            ScoreboardData.topScores = ScoreboardData.topScores.sorted()
+        let minimumScoreOnBoard = ScoreboardData.topScores.min()!
+        if score > minimumScoreOnBoard  {
+            _topScores.remove(at: ScoreboardData.topScores.index(of: minimumScoreOnBoard)!)
+            _topScores.append(score)
             return true
         }
         return false
