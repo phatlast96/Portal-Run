@@ -16,8 +16,6 @@
 		6256DD331DF6504A005B8E2B /* PortalGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6256DD321DF6504A005B8E2B /* PortalGenerator.swift */; };
 		BCB0A9051DF7956F004FAEAF /* icon-images in Resources */ = {isa = PBXBuildFile; fileRef = BCB0A9041DF7956F004FAEAF /* icon-images */; };
 		F82B2D351DD6457A001C0483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B2D341DD6457A001C0483 /* AppDelegate.swift */; };
-		F82B2D371DD6457A001C0483 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F82B2D361DD6457A001C0483 /* GameScene.sks */; };
-		F82B2D391DD6457A001C0483 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F82B2D381DD6457A001C0483 /* Actions.sks */; };
 		F82B2D3D1DD6457A001C0483 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B2D3C1DD6457A001C0483 /* GameViewController.swift */; };
 		F82B2D401DD6457A001C0483 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F82B2D3E1DD6457A001C0483 /* Main.storyboard */; };
 		F82B2D421DD6457B001C0483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F82B2D411DD6457B001C0483 /* Assets.xcassets */; };
@@ -63,8 +61,6 @@
 		BCB0A9041DF7956F004FAEAF /* icon-images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "icon-images"; sourceTree = "<group>"; };
 		F82B2D311DD6457A001C0483 /* Portal Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Portal Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82B2D341DD6457A001C0483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F82B2D361DD6457A001C0483 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		F82B2D381DD6457A001C0483 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		F82B2D3C1DD6457A001C0483 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		F82B2D3F1DD6457A001C0483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F82B2D411DD6457B001C0483 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,10 +154,8 @@
 				6256DD2D1DF62BC3005B8E2B /* Objects and Generation */,
 				6256DD251DF60C8E005B8E2B /* MovingGround.swift */,
 				6256DD271DF61659005B8E2B /* Hero.swift */,
-				F82B2D431DD6457B001C0483 /* LaunchScreen.storyboard */,
 				F82B2D411DD6457B001C0483 /* Assets.xcassets */,
 				F82B2D681DD645AC001C0483 /* Miscelleneous */,
-				F82B2D461DD6457B001C0483 /* Info.plist */,
 			);
 			path = "Portal Run";
 			sourceTree = "<group>";
@@ -187,9 +181,9 @@
 		F82B2D681DD645AC001C0483 /* Miscelleneous */ = {
 			isa = PBXGroup;
 			children = (
+				F82B2D431DD6457B001C0483 /* LaunchScreen.storyboard */,
 				F82B2D3E1DD6457A001C0483 /* Main.storyboard */,
-				F82B2D361DD6457A001C0483 /* GameScene.sks */,
-				F82B2D381DD6457A001C0483 /* Actions.sks */,
+				F82B2D461DD6457B001C0483 /* Info.plist */,
 			);
 			name = Miscelleneous;
 			sourceTree = "<group>";
@@ -324,10 +318,8 @@
 			files = (
 				F9FAF7E11DF8D0A600DD687D /* video.mov in Resources */,
 				F82B2D401DD6457A001C0483 /* Main.storyboard in Resources */,
-				F82B2D371DD6457A001C0483 /* GameScene.sks in Resources */,
 				F82B2D421DD6457B001C0483 /* Assets.xcassets in Resources */,
 				F82B2D451DD6457B001C0483 /* LaunchScreen.storyboard in Resources */,
-				F82B2D391DD6457A001C0483 /* Actions.sks in Resources */,
 				BCB0A9051DF7956F004FAEAF /* icon-images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
