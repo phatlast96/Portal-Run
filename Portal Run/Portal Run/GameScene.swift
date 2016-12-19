@@ -23,10 +23,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var cloudGenerator: CloudGenerator!
     var scoreboardData: ScoreboardData!
     var scoreboard: Scoreboard!
-    var timer: Timer!
     var defaultMoveSpeed: CGFloat!
     var touchToStartlabel: SKLabelNode!
+    private var lastUpdateTime: TimeInterval! = 0
+    private var frameCount = 0.0
     
+    /** The 'state' variable indicates the current state the game is in. */
+    private var state: GameState = GameState.Tutorial
+    
+    private enum GameState {
+        case Tutorial
+        case Running
+        case GameOver
+    }
     override func didMove(to view: SKView) {
 
         backgroundColor = UIColor(red: 159.0/255.0, green: 201.0/255.0, blue: 244.0/255.0, alpha: 1.0)
@@ -75,6 +84,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.defaultMoveSpeed = moveSpeed
     }
     
+    override func update(_ currentTime: TimeInterval) {
+        //self.increaseDifficulty()
+        let delta = currentTime - self.lastUpdateTime
+        self.lastUpdateTime = currentTime
+        
+        switch state {
+        case GameState.Tutorial:
+            return
+        case GameState.Running:
+            self.frameCount += delta
+            if self.frameCount > 1.0 {
+                self.increaseDifficulty()
+                self.frameCount = 0.0
+            }
+            self.cloudGenerator.update(delta: delta)
+            self.wallGenerator.update(delta: delta)
+        case GameState.GameOver:
+            return
+        }
+    }
+    
     func placeTele(x: CGFloat, y: CGFloat){
         let diffs = [abs(Float(TopHeight - y)), abs(Float(CenterHeight - y)), abs(Float(BottomHeight - y))]
         let minimum = diffs.min()
@@ -105,13 +135,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             movingGroundBottom.start()
             hero.stop()
             hero.startRunning()
-            wallGenerator.startGeneratingWallsEvery(seconds: 2.5)
-            cloudGenerator.startGeneratingcloudsEvery(seconds: 7)
+            wallGenerator.startGeneratingWalls()
+//            cloudGenerator.startGeneratingcloudsEvery(seconds: 7)
+            cloudGenerator.startGeneratingClouds()
             // Adding the scoreboard data.
             
             scoreboardData = ScoreboardData()
-            self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: self.increaseDifficulty(timer:))
             isStarted = true
+            self.state = GameState.Running
         } else {
             if let touch = touches.first {
                 let position = touch.location(in: self)
@@ -126,12 +157,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     /** The display layout of the GameScene and actions to take when the game is over. */
     func gameOver(){
         isGameOver = true
+        self.state = GameState.GameOver
         scoreboardData.stopTimer()
         moveSpeed = self.defaultMoveSpeed
         
         hero.physicsBody = nil
-        wallGenerator.stopWalls()
-        cloudGenerator.stopClouds()
+        wallGenerator.stopGeneratingWalls()
+        cloudGenerator.stopGeneratingClouds()
         movingGround.stop()
         hero.stop()
         for portal in portals {
@@ -232,7 +264,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     /** Increases the difficulty of the game based how much time has elapsed during the session. */
-    @objc func increaseDifficulty(timer: Timer) {
+    func increaseDifficulty() {
         if Int(scoreboardData.timeElapsed) % 5 == 0 {
             moveSpeed = CGFloat(moveSpeed) + CGFloat(10)
         }

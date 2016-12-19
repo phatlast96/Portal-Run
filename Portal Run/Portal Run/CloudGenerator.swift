@@ -10,19 +10,12 @@ import UIKit
 import SpriteKit
 
 class CloudGenerator: SKSpriteNode {
-    var generationTimer: Timer?
+    
     var clouds = [Cloud]()
     
-    
-    func startGeneratingcloudsEvery(seconds: TimeInterval){
-        generationTimer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(CloudGenerator.generateCloud), userInfo: nil, repeats: true)
-    }
-    
-    
-    func stopGenerating() {
-        generationTimer?.invalidate()
-    }
-    
+    private var generatingClouds = false
+    private var movingClouds = false
+    private var frameCount = 0.0
     
     func generateCloud() {
         let cloud = Cloud()
@@ -44,12 +37,36 @@ class CloudGenerator: SKSpriteNode {
         clouds.append(cloud)
     }
     
-    func stopClouds(){
-        stopGenerating()
-        for cloud in clouds {
-            cloud.stop()
+    func startGeneratingClouds() {
+        self.generatingClouds = true
+        self.movingClouds = true
+    }
+    
+    func stopGeneratingClouds() {
+        self.generatingClouds = false
+        self.movingClouds = false
+        
+        self.frameCount = 0.0
+    }
+    
+    func update(delta: TimeInterval) {
+        if self.generatingClouds {
+            self.frameCount += delta
+            
+            if self.frameCount >= 3.0 {
+                self.generateCloud()
+                
+                self.frameCount = 0.0
+            }
         }
         
+        if self.movingClouds {
+            for node in self.children {
+                if let cloud = node as? Cloud {
+                    cloud.updateLocation(delta: delta)
+                }
+            }
+        }
     }
 
 }

@@ -17,7 +17,6 @@ class Cloud: SKSpriteNode {
     init() {
         let size = CGSize(width: 20, height: 20 * _imageDimensionRatio)
         super.init(texture: SKTexture(imageNamed: "icon-images/cloud.png"), color: UIColor.clear, size: size)
-        self.startMoving()
     }
     
     convenience init(positionAt: CGPoint) {
@@ -29,9 +28,12 @@ class Cloud: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startMoving() {
-        let moveLeft = SKAction.moveBy(x: (-moveSpeed/2) * 0.6, y: 0, duration: 1)
-        run(SKAction.repeatForever(moveLeft))
+    func updateLocation(delta: TimeInterval) {
+        self.position.x = self.position.x - CGFloat(CGFloat(delta) * moveSpeed/3)
+        
+        if self.position.x < 0 {
+            self.removeFromParent()
+        }
     }
     
     func stop(){

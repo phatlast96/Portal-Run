@@ -10,18 +10,10 @@ import Foundation
 import SpriteKit
 
 class WallGenerator: SKSpriteNode {
-    var generationTimer: Timer?
     var walls = [Wall]()
-    
-    
-    func startGeneratingWallsEvery(seconds: TimeInterval){
-        generationTimer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(WallGenerator.generateWall), userInfo: nil, repeats: true)
-    }
-    
-    
-    func stopGenerating() {
-        generationTimer?.invalidate()
-    }
+    var generatingWalls = false
+    var movingWalls = false
+    var frameCount = 0.0
     
     
     func generateWall() {
@@ -44,11 +36,37 @@ class WallGenerator: SKSpriteNode {
         walls.append(wall)
     }
     
-    func stopWalls(){
-        stopGenerating()
-        for wall in walls {
-            wall.stop()
+    func startGeneratingWalls() {
+        self.generatingWalls = true
+        self.movingWalls = true
+    }
+    
+    func stopGeneratingWalls() {
+        self.generatingWalls = false
+        self.movingWalls = false
+        
+        self.frameCount = 0.0
+    }
+    
+    func update(delta: TimeInterval) {
+        if self.generatingWalls {
+            self.frameCount += delta
+            
+            if self.frameCount >= 3.0 {
+                self.generateWall()
+                
+                self.frameCount = 0.0
+            }
         }
         
+        if self.movingWalls {
+            for node in self.children {
+                if let wall = node as? Wall {
+                    wall.updateLocation(delta: delta)
+                }
+            }
+        }
     }
+    
+ 
 }

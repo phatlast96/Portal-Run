@@ -18,7 +18,6 @@ class Wall: SKSpriteNode {
     init() {
         let size = CGSize(width: Wall_WIDTH, height: Wall_HEIGHT)
         super.init(texture: nil, color: Wall_COLOR, size: size)
-        startMoving()
         loadPhysicsBody(size: size)
         let randomIndex = Int(arc4random_uniform(UInt32(obstacles.count)))
         let obstacle = obstacles[randomIndex]
@@ -30,9 +29,12 @@ class Wall: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startMoving() {
-        let moveLeft = SKAction.moveBy(x: -moveSpeed/2, y: 0, duration: 1)
-        run(SKAction.repeatForever(moveLeft))
+    func updateLocation(delta: TimeInterval) {
+        self.position.x = self.position.x - CGFloat(CGFloat(delta) * moveSpeed/2)
+        
+        if self.position.x < 0 {
+            self.removeFromParent()
+        }
     }
     
     func loadPhysicsBody(size: CGSize) {
@@ -41,11 +43,10 @@ class Wall: SKSpriteNode {
         physicsBody?.affectedByGravity = false
         
     }
+    
     func stop(){
         removeAllActions()
     }
-    
-    
     
 }
 
