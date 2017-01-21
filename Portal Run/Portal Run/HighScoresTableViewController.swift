@@ -48,8 +48,7 @@ class HighScoresTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "highScoreCell", for: indexPath)
         cell.textLabel?.text = "\(1 + indexPath.row). \(highScores[indexPath.row]) seconds"
         return cell
     }

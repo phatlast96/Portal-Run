@@ -85,7 +85,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        //self.increaseDifficulty()
         let delta = currentTime - self.lastUpdateTime
         self.lastUpdateTime = currentTime
         
@@ -136,10 +135,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hero.stop()
             hero.startRunning()
             wallGenerator.startGeneratingWalls()
-//            cloudGenerator.startGeneratingcloudsEvery(seconds: 7)
             cloudGenerator.startGeneratingClouds()
             // Adding the scoreboard data.
-            
             scoreboardData = ScoreboardData()
             isStarted = true
             self.state = GameState.Running
