@@ -7,8 +7,11 @@ Authors:
 - Alex Chan
 
 **Setup Information**
+
 *Requirements:* Swift 3, Xcode 8 <br />
+
 *Optional:* To use features that require Firebase, download your own "GoogleService-Info.plist" from Firebase and put it into the project.
+
 *Note:* When opening the project, use "Portal Run.xcworkspace" instead of "Portal Run.xcodeproj".
 
 **Purpose**
