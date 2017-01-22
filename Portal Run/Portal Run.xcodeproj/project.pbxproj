@@ -29,6 +29,7 @@
 		F82B2D721DD66398001C0483 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B2D711DD66397001C0483 /* InstructionViewController.swift */; };
 		F82DB8261DF772E200A613F9 /* ScoreboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82DB8251DF772E000A613F9 /* ScoreboardData.swift */; };
 		F82DB8291DF798A000A613F9 /* HighScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82DB8281DF798A000A613F9 /* HighScoresTableViewController.swift */; };
+		F8978D551E343DCD008F1774 /* Portal-Run.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8978D531E343DCD008F1774 /* Portal-Run.xcdatamodeld */; };
 		F8B7CC7C1DF14548002FE3D9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7CC7B1DF14548002FE3D9 /* GameScene.swift */; };
 		F8D2FDF61E33FD0B006515FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8D2FDF51E33FD0A006515FC /* GoogleService-Info.plist */; };
 		F8E4391F1DF8DC58003B3CD3 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4391E1DF8DC58003B3CD3 /* Scoreboard.swift */; };
@@ -89,6 +90,7 @@
 		F82B2D711DD66397001C0483 /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		F82DB8251DF772E000A613F9 /* ScoreboardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardData.swift; sourceTree = "<group>"; };
 		F82DB8281DF798A000A613F9 /* HighScoresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresTableViewController.swift; sourceTree = "<group>"; };
+		F8978D541E343DCD008F1774 /* Portal-Run.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Portal-Run.xcdatamodel"; sourceTree = "<group>"; };
 		F8B7CC7B1DF14548002FE3D9 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		F8D2FDF51E33FD0A006515FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F8E4391E1DF8DC58003B3CD3 /* Scoreboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				F82B2D431DD6457B001C0483 /* LaunchScreen.storyboard */,
 				F82B2D3E1DD6457A001C0483 /* Main.storyboard */,
+				F8978D531E343DCD008F1774 /* Portal-Run.xcdatamodeld */,
 				F8D2FDF51E33FD0A006515FC /* GoogleService-Info.plist */,
 				F82B2D461DD6457B001C0483 /* Info.plist */,
 			);
@@ -549,6 +552,7 @@
 				F82B2D351DD6457A001C0483 /* AppDelegate.swift in Sources */,
 				6256DD2C1DF62BBC005B8E2B /* Wall.swift in Sources */,
 				F82B2D701DD6601B001C0483 /* StartScreenViewController.swift in Sources */,
+				F8978D551E343DCD008F1774 /* Portal-Run.xcdatamodeld in Sources */,
 				6256DD2F1DF6303F005B8E2B /* Constants.swift in Sources */,
 				F8E439211DF91025003B3CD3 /* Cloud.swift in Sources */,
 				F82DB8261DF772E200A613F9 /* ScoreboardData.swift in Sources */,
@@ -828,6 +832,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F8978D531E343DCD008F1774 /* Portal-Run.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F8978D541E343DCD008F1774 /* Portal-Run.xcdatamodel */,
+			);
+			currentVersion = F8978D541E343DCD008F1774 /* Portal-Run.xcdatamodel */;
+			path = "Portal-Run.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F82B2D291DD6457A001C0483 /* Project object */;
 }

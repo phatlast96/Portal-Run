@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Portal Run/CDHighScores1+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Portal Run/CDHighScores1+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Portal Run.xcodeproj">
    </FileRef>
    <FileRef

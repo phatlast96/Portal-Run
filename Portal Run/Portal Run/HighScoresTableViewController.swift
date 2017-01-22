@@ -7,16 +7,40 @@
 //
 
 import UIKit
+import CoreData
 
 class HighScoresTableViewController: UITableViewController {
     
-    var highScores: [Int]!
+    static var highScores: [Int]!
+    
+    var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "High Scores"
         self.view.backgroundColor = UIColor.yellow
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "highScoreCell")
         
+        if ScoreboardData.topScores.count == 0 {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDHighScores1")
+            do {
+                let dataRecords = try managedContext.fetch(fetchRequest)
+                for shownItems in dataRecords {
+                    _ = ScoreboardData.updateTopScore(score: (shownItems as! NSManagedObject).value(forKey: "score") as! Int)
+                }
+                
+            } catch {
+                
+            }
+        }
+        
+        self.segmentedControl = UISegmentedControl.init(items: ["Personal", "Global"])
+        self.segmentedControl.frame = CGRect.init(x: 35, y: 200, width: 250, height: 50)
+        self.segmentedControl.addTarget(self, action: #selector(segmentAction), for: .valueChanged)
+        self.segmentedControl.selectedSegmentIndex = 0
+        self.view.addSubview(segmentedControl)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -26,8 +50,55 @@ class HighScoresTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        highScores = ScoreboardData.topScoresDescending
+        HighScoresTableViewController.highScores = ScoreboardData.topScoresDescending
+        HighScoresTableViewController.savePersonalHighScores()
     }
+    
+    @objc private func segmentAction() {
+        switch(self.segmentedControl.selectedSegmentIndex) {
+        case 0:
+            print("Personal high score are desired.")
+        case 1:
+            print("Global high scores are desired.")
+        default: break
+        }
+    }
+    
+    class func savePersonalHighScores() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "CDHighScores1", in: managedContext)
+        if #available(iOS 10.0, *) {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDHighScores1")
+            do {
+                let dataRecords = try managedContext.fetch(fetchRequest)
+                for shownItems in dataRecords {
+                    managedContext.delete(shownItems as! NSManagedObject)
+                }
+                
+            } catch {
+                
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        for i in 0..<HighScoresTableViewController.highScores.count {
+            let highScoresInCoreData = NSManagedObject(entity: entity!, insertInto: managedContext) // Creates a new record for the table
+            highScoresInCoreData.setValue(HighScoresTableViewController.highScores[i], forKey: "score") // Fills the new record with data
+            
+            do {
+                try managedContext.save()
+            } catch {
+                
+            }
+        }
+        
+        appDelegate.saveContext()
+
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,13 +114,13 @@ class HighScoresTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return highScores.count
+        return HighScoresTableViewController.highScores.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "highScoreCell", for: indexPath)
-        cell.textLabel?.text = "\(1 + indexPath.row). \(highScores[indexPath.row]) seconds"
+        cell.textLabel?.text = "\(1 + indexPath.row). \(HighScoresTableViewController.highScores[indexPath.row]) seconds"
         return cell
     }
     
