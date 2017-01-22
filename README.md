@@ -6,7 +6,7 @@ Authors:
 - Kijung Kim
 - Alex Chan
 
-**Setup Information**
+###Setup Information
 
 *Requirements:* Swift 3, Xcode 8 <br />
 
@@ -14,6 +14,7 @@ Authors:
 
 *Note:* When opening the project, use "Portal Run.xcworkspace" instead of "Portal Run.xcodeproj".
 
+###About This App
 **Purpose**
 
 To entertain those that are dying from pure boredom. More specifically, create a fun endless runner game that is based on using portals to move you from danger to safety before hitting an obstacle.
