@@ -27,11 +27,11 @@
 		F82B2D5B1DD6457B001C0483 /* Portal_RunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B2D5A1DD6457B001C0483 /* Portal_RunUITests.swift */; };
 		F82B2D701DD6601B001C0483 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B2D6F1DD6601B001C0483 /* StartScreenViewController.swift */; };
 		F82B2D721DD66398001C0483 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B2D711DD66397001C0483 /* InstructionViewController.swift */; };
+		F82C5BAE1E3478DF00A5EB02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F82C5BAD1E3478DF00A5EB02 /* GoogleService-Info.plist */; };
 		F82DB8261DF772E200A613F9 /* ScoreboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82DB8251DF772E000A613F9 /* ScoreboardData.swift */; };
 		F82DB8291DF798A000A613F9 /* HighScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82DB8281DF798A000A613F9 /* HighScoresTableViewController.swift */; };
 		F8978D551E343DCD008F1774 /* Portal-Run.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8978D531E343DCD008F1774 /* Portal-Run.xcdatamodeld */; };
 		F8B7CC7C1DF14548002FE3D9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B7CC7B1DF14548002FE3D9 /* GameScene.swift */; };
-		F8D2FDF61E33FD0B006515FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8D2FDF51E33FD0A006515FC /* GoogleService-Info.plist */; };
 		F8E4391F1DF8DC58003B3CD3 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4391E1DF8DC58003B3CD3 /* Scoreboard.swift */; };
 		F8E439211DF91025003B3CD3 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E439201DF91024003B3CD3 /* Cloud.swift */; };
 		F8E439231DF91574003B3CD3 /* CloudGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E439221DF91574003B3CD3 /* CloudGenerator.swift */; };
@@ -88,11 +88,11 @@
 		F82B2D5C1DD6457B001C0483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F82B2D6F1DD6601B001C0483 /* StartScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		F82B2D711DD66397001C0483 /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		F82C5BAD1E3478DF00A5EB02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F82DB8251DF772E000A613F9 /* ScoreboardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreboardData.swift; sourceTree = "<group>"; };
 		F82DB8281DF798A000A613F9 /* HighScoresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresTableViewController.swift; sourceTree = "<group>"; };
 		F8978D541E343DCD008F1774 /* Portal-Run.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Portal-Run.xcdatamodel"; sourceTree = "<group>"; };
 		F8B7CC7B1DF14548002FE3D9 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		F8D2FDF51E33FD0A006515FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F8E4391E1DF8DC58003B3CD3 /* Scoreboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 		F8E439201DF91024003B3CD3 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		F8E439221DF91574003B3CD3 /* CloudGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudGenerator.swift; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 				F82B2D431DD6457B001C0483 /* LaunchScreen.storyboard */,
 				F82B2D3E1DD6457A001C0483 /* Main.storyboard */,
 				F8978D531E343DCD008F1774 /* Portal-Run.xcdatamodeld */,
-				F8D2FDF51E33FD0A006515FC /* GoogleService-Info.plist */,
+				F82C5BAD1E3478DF00A5EB02 /* GoogleService-Info.plist */,
 				F82B2D461DD6457B001C0483 /* Info.plist */,
 			);
 			name = Miscelleneous;
@@ -372,10 +372,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9FAF7E11DF8D0A600DD687D /* video.mov in Resources */,
-				F8D2FDF61E33FD0B006515FC /* GoogleService-Info.plist in Resources */,
 				F82B2D401DD6457A001C0483 /* Main.storyboard in Resources */,
 				F82B2D421DD6457B001C0483 /* Assets.xcassets in Resources */,
 				F82B2D451DD6457B001C0483 /* LaunchScreen.storyboard in Resources */,
+				F82C5BAE1E3478DF00A5EB02 /* GoogleService-Info.plist in Resources */,
 				BCB0A9051DF7956F004FAEAF /* icon-images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,7 +6,10 @@ target 'Portal Run' do
   use_frameworks!
 
   # Pods for Portal Run
+
 pod ‘Firebase/Core’
+pod ‘Firebase/Database’
+
   target 'Portal RunTests' do
     inherit! :search_paths
     # Pods for testing
