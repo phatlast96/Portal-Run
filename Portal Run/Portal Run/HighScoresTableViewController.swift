@@ -21,21 +21,6 @@ class HighScoresTableViewController: UITableViewController {
         self.view.backgroundColor = UIColor.yellow
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "highScoreCell")
         
-        if ScoreboardData.topScores.count == 0 {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let managedContext = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDHighScores1")
-            do {
-                let dataRecords = try managedContext.fetch(fetchRequest)
-                for shownItems in dataRecords {
-                    _ = ScoreboardData.updateTopScore(score: (shownItems as! NSManagedObject).value(forKey: "score") as! Int)
-                }
-                
-            } catch {
-                
-            }
-        }
-        
         self.segmentedControl = UISegmentedControl.init(items: ["Personal", "Global"])
         self.segmentedControl.frame = CGRect.init(x: 35, y: 200, width: 250, height: 50)
         self.segmentedControl.addTarget(self, action: #selector(segmentAction), for: .valueChanged)
@@ -55,13 +40,16 @@ class HighScoresTableViewController: UITableViewController {
     }
     
     @objc private func segmentAction() {
-        switch(self.segmentedControl.selectedSegmentIndex) {
+        switch (self.segmentedControl.selectedSegmentIndex) {
         case 0:
             print("Personal high score are desired.")
+            HighScoresTableViewController.highScores = ScoreboardData.topScoresDescending
         case 1:
             print("Global high scores are desired.")
+            HighScoresTableViewController.highScores = []
         default: break
         }
+        self.tableView.reloadData()
     }
     
     class func savePersonalHighScores() {
@@ -85,7 +73,7 @@ class HighScoresTableViewController: UITableViewController {
         
         for i in 0..<HighScoresTableViewController.highScores.count {
             let highScoresInCoreData = NSManagedObject(entity: entity!, insertInto: managedContext) // Creates a new record for the table
-            highScoresInCoreData.setValue(HighScoresTableViewController.highScores[i], forKey: "score") // Fills the new record with data
+            highScoresInCoreData.setValue(ScoreboardData.topScoresDescending[i], forKey: "score") // Fills the new record with data
             
             do {
                 try managedContext.save()

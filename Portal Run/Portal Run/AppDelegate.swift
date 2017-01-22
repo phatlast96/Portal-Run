@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        self.uploadSavedData()
         window? = UIWindow(frame: UIScreen.main.bounds)
         let startScreenVC = StartScreenViewController()
         let navigationVC = UINavigationController(rootViewController: startScreenVC)
@@ -26,6 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func uploadSavedData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CDHighScores1")
+        do {
+            let dataRecords = try managedContext.fetch(fetchRequest)
+            for shownItems in dataRecords {
+                _ = ScoreboardData.updateTopScore(score: (shownItems as! NSManagedObject).value(forKey: "score") as! Int)
+            }
+            
+        } catch {
+            
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

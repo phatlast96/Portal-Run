@@ -81,6 +81,11 @@ class ScoreboardData: NSObject {
             _topScores.append(score)
             return true
         }
+        for topScore in ScoreboardData.topScores {
+            if topScore == score {
+                return false
+            }
+        }
         let minimumScoreOnBoard = ScoreboardData.topScores.min()!
         if score > minimumScoreOnBoard  {
             _topScores.remove(at: ScoreboardData.topScores.index(of: minimumScoreOnBoard)!)
