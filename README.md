@@ -1,12 +1,18 @@
-#iOS DeCal Final Project #
-
-App Name: Portal Run
+#Portal Run#
 
 Authors:
-- Alex Chan
+- Phat Pham
 - Steven Holman
 - Kijung Kim
-- Phat Pham
+- Alex Chan
+
+**Setup Information**
+
+*Requirements:* Swift 3, Xcode 8 <br />
+
+*Optional:* To use features that require Firebase, download your own "GoogleService-Info.plist" from Firebase and put it into the project.
+
+*Note:* When opening the project, use "Portal Run.xcworkspace" instead of "Portal Run.xcodeproj".
 
 **Purpose**
 
@@ -19,6 +25,9 @@ To entertain those that are dying from pure boredom. More specifically, create a
 - Automated, randomly generated obstacle creation (Types of obstacles include cliff edges, rolling balls, borders, etc.)
 - High Scores list
 - Tutorial View to teach game basics
+
+**Features that requires Firebase (available soon)**
+- Global High Scores
 
 **Control Flow**
 - Game begins by taking you to a StartScreen that provides three UI Buttons. The first button starts the game is start game. The second button will segue into the HighScoreView that displays all the highest scores received in the game. The third button will segue into the InstructionView that tells the user how to play the game.
